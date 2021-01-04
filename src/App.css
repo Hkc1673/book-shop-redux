@@ -1,4 +1,25 @@
-.App {
-  text-align: center;
+.app {
+  font-family: sans-serif;
+}
+
+.app > h1 {
+  font-size: 22px;
+  background: #222;
+  color: white;
+  padding: 3px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.app > h1 > img {
+  width: 20px;
+}
+
+.app > div > h2 {
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
 }
 

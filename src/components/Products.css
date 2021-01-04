@@ -1,0 +1,12 @@
+.products__book {
+    display: flex;
+    padding: 10px;
+    margin: 0 0 10px 0;
+    border: 1px solid #ccc;
+    transition: all 0.5s;
+  }
+  
+  .products__book img {
+    width: 130px;
+    margin: 0 10px 0 0;
+  }
