@@ -10,3 +10,10 @@
     width: 130px;
     margin: 0 10px 0 0;
   }
+  .cart > p {
+    position: absolute;
+    top: 40px;
+    right: 15px;
+    font-weight: bold;
+    color: red;
+  }
