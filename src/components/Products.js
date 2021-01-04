@@ -2,15 +2,18 @@ import { IconButton } from '@material-ui/core';
 import { AddShoppingCart, MenuBook, ShoppingCart } from '@material-ui/icons';
 import React from 'react'
 import { Link } from "react-router-dom";
+import { addCart } from "../actions/action"
 import "./Products.css"
+import { connect } from "react-redux";
 
 function Products(props) {
+console.log(props)
     return (
         <div className="products">
             <h2>
                 <span>
                     <IconButton>
-                        <MenuBook color="secondary"/>
+                        <MenuBook color="secondary" />
                     </IconButton>
                 </span>
                 <Link to="/cart">
@@ -19,22 +22,38 @@ function Products(props) {
                     </IconButton>
                 </Link>
             </h2>
-            <div className="products__book">
-                <img
-                    src="https://m.media-amazon.com/images/I/5112YFsXIJL._SL230_.jpg"
-                    alt="Elon"
-                />
-                <div>
-                    <h4>Elon Musk: Tesla, SpaceX, and the Quest for a Fantastic Future</h4>
-                    <p>Author: Ashlee Vance</p>
-                    <p>Price: &#8378; 19.99</p>
-                    <IconButton>
-                        <AddShoppingCart />
-                    </IconButton>
-                </div>
-            </div>
+            <p>{ props.cart.length }</p>
+                {
+                    props.bookList.map((book) => {
+                        return (
+                            <div className="products__book" key={book.id}>
+                                <img
+                                    src={book.image}
+                                    alt=""
+                                />
+                                <div>
+                                    <h4>{book.name}</h4>
+                                    <p>Author: {book.author}</p>
+                                    <p>Price: &#8378; {book.price}</p>
+
+                                    <IconButton>
+                                        <AddShoppingCart onClick={()=> props.addCart(book)}/>
+                                    </IconButton>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
         </div>
     )
 }
 
-export default Products
+const mapStateToProps = state => {
+    return {
+        bookList: state.bookList,
+        cart: state.cart
+    }
+}
+
+
+export default connect(mapStateToProps, {addCart})(Products);
